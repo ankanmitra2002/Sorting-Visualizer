@@ -237,6 +237,11 @@ function handleSort(){
     alert('Please Choose a Sorting Algorithm');
     return;
   }
+  const speedOrder = document.getElementsByClassName('select-selected')[2].firstChild;
+  if(speedOrder.nodeValue ==="Select Speed"){
+    alert('Please Choose the speed of the algorithm');
+    return;
+  }
   console.log(sortOrder.nodeValue);
   document.getElementById("gen-array").disabled = true;
   document.getElementById("sort").disabled = true;
@@ -244,20 +249,28 @@ function handleSort(){
   for(let i=0;i<bars.length;i++){
     bars[i].style.backgroundColor = "violet";
   }
+  let delayInput;
+  if(speedOrder.nodeValue === "Slow(delay-200ms)"){
+    delayInput = 200;
+  }else if(speedOrder.nodeValue === "Fast(delay-100ms)"){
+    delayInput = 100;
+  }else if(speedOrder.nodeValue === "Very Fast(delay-50ms)"){
+    delayInput = 50;
+  }
   if(sortOrder.nodeValue ==="Bubble Sort"){
-    bubbleSort();
+    bubbleSort(delayInput);
     console.log(true);
   }else if(sortOrder.nodeValue ==="Insertion Sort"){
-    insertionSort();
+    insertionSort(delayInput);
   }else if(sortOrder.nodeValue ==="Selection Sort"){
-    selectionSort();
+    selectionSort(delayInput);
   }else if(sortOrder.nodeValue ==="Merge Sort"){
-    mergeSort();
+    mergeSort(delayInput);
   }else if(sortOrder.nodeValue ==="Quick Sort"){
-    quickSort();
+    quickSort(delayInput);
   }
 }
-function swapping(val1, val2)
+function swapping(val1, val2, delay)
 {
   return new Promise((resolve)=>
   {
@@ -272,14 +285,14 @@ function swapping(val1, val2)
         setTimeout(()=>{
           contain.insertBefore(val2,val1);
            resolve();
-        }, 150);
+        }, delay);
       });
   });
  
 }
-async function bubbleSort()
+async function bubbleSort(delay)
   {
-    const delay = 200;
+    // const delay = 200;
     let bars = document.querySelectorAll(".bar");
      const size= bars.length;
      for(let i=0; i<size; i++)
@@ -295,7 +308,7 @@ async function bubbleSort()
         document.getElementById("comp").innerHTML = `Number Of Comparisons : ${comp}`;
         if(val1>val2)
         {
-          await swapping(bars[j],bars[j+1]);
+          await swapping(bars[j],bars[j+1],delay);
           bars = document.querySelectorAll(".bar");
 
         }
@@ -303,14 +316,14 @@ async function bubbleSort()
         bars[j].style.backgroundColor = "violet";
        }
        bars[size-i-1].style.backgroundColor =   finalColour;
-       await new Promise((resolve)=>{setTimeout(()=>{resolve()},150)});
+       await new Promise((resolve)=>{setTimeout(()=>{resolve()},delay)});
      }
      document.getElementById("gen-array").disabled = false;
     document.getElementById("sort").disabled = false;
   }
-  async function selectionSort()
+  async function selectionSort(delay)
   {
-    const delay = 200;
+    // const delay = 200;
     let bars = document.querySelectorAll(".bar");
     const size= bars.length;
     let min_ind = 0;
@@ -356,9 +369,9 @@ async function bubbleSort()
     document.getElementById("sort").disabled = false;
   }
   
-  async function insertionSort()
+  async function insertionSort(delay)
   {
-    const delay = 200;
+    // const delay = 200;
     let bars = document.querySelectorAll(".bar");
     const size= bars.length;
     bars[0].style.backgroundColor = finalColour;
@@ -369,7 +382,7 @@ async function bubbleSort()
       let barheight = bars[i].style.height;
       bars[i].style.backgroundColor = sortingColour;
       await new Promise((resolve)=>{
-        setTimeout(()=>resolve(), 1000)
+        setTimeout(()=>resolve(),delay)
       });
       let k=true;
       while(j>=0 && parseInt(bars[j].childNodes[0].innerHTML) >key)
@@ -402,8 +415,8 @@ async function bubbleSort()
     document.getElementById("gen-array").disabled = false;
     document.getElementById("sort").disabled = false;
   }
- async function merging(left, mid, right) {
-  const delay = 500;
+ async function merging(left, mid, right,delay) {
+  // const delay = 500;
   let i = left;
   let j = mid + 1;
   let k = 0;
@@ -452,26 +465,26 @@ async function bubbleSort()
   });
 }
   /* recursive merge sort function */
-async function merge_sort(left,right)
+async function merge_sort(left,right,delay)
 {
     let mid;
     if ( left < right )
     {
         mid = Number.parseInt((left + right)/2);
-        await merge_sort(left,mid);
-        await merge_sort(mid+1,right);
-        await merging(left,mid,right);
+        await merge_sort(left,mid,delay);
+        await merge_sort(mid+1,right,delay);
+        await merging(left,mid,right,delay);
     }
 }
-async function mergeSort(){
+async function mergeSort(delay){
   let bars = document.querySelectorAll(".bar");
-  await merge_sort(0,bars.length-1);
+  await merge_sort(0,bars.length-1,delay);
     document.getElementById("gen-array").disabled = false;
     document.getElementById("sort").disabled = false;
 }
-async function partition(left,right)
+async function partition(left,right,delay)
 {
-  const delay = 200;
+  // const delay = 200;
   let bars = document.querySelectorAll(".bar");
   let pivot = Number.parseInt(bars[left].childNodes[0].innerHTML);
   let i = left+1;
@@ -556,13 +569,13 @@ async function partition(left,right)
   return j;
 }
 /* recursive quick sort function */
-async function quick_sort(left,right)
+async function quick_sort(left,right,delay)
 {
     if ( left < right )
     {
-        let part = await partition(left,right);
-        await quick_sort(left,part-1);
-        await quick_sort(part+1,right);
+        let part = await partition(left,right,delay);
+        await quick_sort(left,part-1,delay);
+        await quick_sort(part+1,right,delay);
     }
     else if(left == right)
     {
@@ -570,9 +583,9 @@ async function quick_sort(left,right)
       bars[left].style.backgroundColor = finalColour;
     }
 }
-async function quickSort(){
+async function quickSort(delay){
   let bars = document.querySelectorAll(".bar");
-  await quick_sort(0,bars.length-1);
+  await quick_sort(0,bars.length-1,delay);
     document.getElementById("gen-array").disabled = false;
     document.getElementById("sort").disabled = false;
 }

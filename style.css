@@ -21,7 +21,6 @@ h2{
 }
 .container{
   padding-top: 2%;
-  /* text-align: center; */
 }
 label {
   display: inline-block;
@@ -63,7 +62,7 @@ label {
 .row{
   display: inline-block;
   position: relative;
-  margin: 1.5%;
+  margin: 1%;
   margin-top: 0%;
   margin-bottom: 2%;
 }
@@ -73,7 +72,7 @@ label {
     border: 3px solid rgb(13, 2, 36);
     border-radius: 15px;
     position: relative;
-    width: 20%;
+    width: 15%;
     z-index: 1;
   }
   
