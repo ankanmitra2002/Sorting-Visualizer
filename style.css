@@ -72,8 +72,8 @@ label {
     border: 3px solid rgb(13, 2, 36);
     border-radius: 15px;
     position: relative;
-    width: 15%;
-    z-index: 1;
+    width:15%;
+    /* z-index: 1; */
   }
   
   .custom-select select {
@@ -140,6 +140,7 @@ label {
     top: 100%;
     left: 0;
     right: 0;
+    z-index:2;
   }
   
   /* Hide the items when the select box is closed: */
@@ -199,4 +200,40 @@ label {
     height: 200px;
   }
   
+@media (max-width: 767px) {
+     body {
+      font-size: 10px;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  .data-container {
+    width: 90%;
+    padding-right: 5%;
+    margin: 2% auto;
+  }
 
+  .image {
+    width: 90%;
+    margin: 2% auto;
+  }
+  .bottom{
+    width: 90%;
+    margin: 2% auto;
+  }
+  #comp{
+    text-align: center;
+  }
+  #swap {
+    text-align: center;
+  }
+  .custom-select{
+    width:50%;
+    margin-left:25%;
+    margin-right: 25%;
+  }
+  .select-items{
+    background-color: rgb(89, 70, 126);
+  }
+       
+}
