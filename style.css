@@ -1,17 +1,17 @@
-body{
-    background-color: rgb(234, 230, 225);
-    font-family: Arial, Helvetica, sans-serif;
+body {
+  background-color: rgb(234, 230, 225);
+  font-family: Arial, Helvetica, sans-serif;
 }
-.heading{
-    text-align: center;
-    /* background-color: antiquewhite; */
-    color:rgba(23, 2, 47, 0.858);
+.heading {
+  text-align: center;
+  /* background-color: antiquewhite; */
+  color: rgba(23, 2, 47, 0.858);
 }
-h2{
+h2 {
   text-align: left;
   margin-left: 2%;
 }
-.bottom{
+.bottom {
   display: inline-block;
   width: 30%;
   /* text-align: left; */
@@ -19,14 +19,14 @@ h2{
   margin-top: 0%;
   margin-bottom: 0%;
 }
-.container{
+.container {
   padding-top: 2%;
 }
 label {
   display: inline-block;
 }
 .gen-array {
-  background-color:  rgb(240, 240, 13);
+  background-color: rgb(240, 240, 13);
   color: black;
   border: none;
   font-weight: bold;
@@ -35,8 +35,8 @@ label {
   width: 100%;
   padding: 15px 15px;
 }
-.sort{
-  background-color:  rgb(80, 3, 80);
+.sort {
+  background-color: rgb(80, 3, 80);
   color: white;
   border: none;
   font-weight: bold;
@@ -45,8 +45,8 @@ label {
   width: 100%;
   padding: 15px 15px;
 }
-.reset{
-  background-color:  rgb(30, 151, 14);
+.reset {
+  background-color: rgb(30, 151, 14);
   color: white;
   border: none;
   font-weight: bold;
@@ -59,7 +59,7 @@ label {
 .gen-array:hover {
   background-color: rgb(235, 235, 29);
 }
-.row{
+.row {
   display: inline-block;
   position: relative;
   margin: 1%;
@@ -68,145 +68,177 @@ label {
 }
 
 .custom-select {
-    background-color: rgb(38, 8, 98);
-    border: 3px solid rgb(13, 2, 36);
-    border-radius: 15px;
-    position: relative;
-    width:15%;
-    /* z-index: 1; */
+  background-color: rgb(38, 8, 98);
+  border: 3px solid rgb(13, 2, 36);
+  border-radius: 15px;
+  position: relative;
+  width: 15%;
+  /* z-index: 1; */
+}
+
+.custom-select select {
+  display: none;
+  /*hiding original SELECT element: */
+}
+label {
+  font-weight: bold;
+  padding: 0px;
+}
+
+input[type="number"] {
+  padding: 1px;
+  margin: 0px;
+  border: 1px solid rgb(14, 4, 37);
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 16px;
+}
+
+input[type="number"]:focus {
+  border: 3px solid rgb(14, 4, 37);
+}
+
+/* Styling the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 42%;
+  right: 2%;
+  width: 0;
+  height: 0;
+  border: 6px solid #dfcece;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  /* border-color: transparent transparent #dfcece transparent; */
+  border: 6px solid #dfcece;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid transparent;
+  top: 8px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: rgb(38, 8, 98);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.box {
+  display: inline-block;
+  /* text-align: left; */
+  margin-left: 1%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+.data-container {
+  width: 60%;
+  height: 400px;
+  margin-left: 1%;
+  background-color: rgb(184, 231, 240);
+  position: relative;
+  border-radius: 10px;
+  border: 2px solid rgb(6, 6, 92);
+  box-shadow: inset 0px 0px 5px 5px#5860f5;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+.image {
+  width: 30%;
+  height: 400px;
+  margin-right: 1%;
+  background-color: white;
+  padding-right: 5%;
+  position: relative;
+  border-radius: 10px;
+  border: 2px solid rgb(6, 6, 92);
+  box-shadow: inset 0px 0px 5px 5px#5860f5;
+  /* Enable scrollbars when the content overflows */
+  overflow: auto;
+  background-image: url("./assets/Sorting.jpg");
+  /* Adjust to fit the image inside the div */
+  background-size: 100% 100%;
+}
+.bar {
+  /* width: 28px; */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: violet;
+  border: 1px solid black;
+  transition: 0.2s all ease;
+}
+#scrollableDiv {
+  width: 300px;
+  height: 200px;
+}
+@media (max-width: 1300px) and (min-width: 767px) {
+  #comp {
+    text-align: center;
   }
-  
-  .custom-select select {
-    display: none; 
-    /*hiding original SELECT element: */
+
+  #swap {
+    text-align: center;
+  }
+  .bottom {
+    width: 45%;
+    margin: 2% auto;
+  }
+  .custom-select {
+    width: 28%;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .row {
+    text-align: center;
+  }
+  .padding {
+    display: inline-block;
+    width: 28%;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  #array-size {
+    width: 90%;
   }
   label {
-    font-weight: bold;
-    padding: 0px;
+    font-size: 14px;
   }
-  
-  input[type="number"] {
-    padding: 1px;
-    margin: 0px;
-    border: 1px solid rgb(14, 4, 37);
-    border-radius: 10px;
-    font-weight: bold;
-    text-align: center;
-    padding: 8px 16px;
-  }
-  
-  input[type="number"]:focus {
-    border: 3px solid rgb(14, 4, 37);
-  }
-  
-  
-  /* Styling the arrow inside the select element: */
-  .select-selected:after {
-    position: absolute;
-    content: "";
-    top: 42%;
-    right: 2%;
-    width: 0;
-    height: 0;
-    border: 6px solid #dfcece;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-
-  }
-  
-  /* Point the arrow upwards when the select box is open (active): */
-  .select-selected.select-arrow-active:after {
-    /* border-color: transparent transparent #dfcece transparent; */
-    border: 6px solid #dfcece;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid transparent;
-    top: 8px;
-  }
-  
-  /* style the items (options), including the selected item: */
-  .select-items div,.select-selected {
-    color: #ffffff;
-    padding: 8px 16px;
-    border: 1px solid transparent;
-    cursor: pointer;
-  }
-  
-  /* Style items (options): */
-  .select-items {
-    position: absolute;
-    background-color: rgb(38, 8, 98);
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index:2;
-  }
-  
-  /* Hide the items when the select box is closed: */
-  .select-hide {
-    display: none;
-  }
-  
-  .select-items div:hover, .same-as-selected {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .box{
-    display: inline-block;
-    /* text-align: left; */
-    margin-left: 1%;
-    margin-top: 0%;
-    margin-bottom: 0%;
-  }
-  .data-container {
-    width: 60%;
-    height: 400px;
-    margin-left: 1%;
-    background-color: rgb(184, 231, 240);
-    position: relative;
-    border-radius: 10px;
-    border: 2px solid rgb(6, 6, 92);
-    box-shadow: inset 0px 0px 5px 5px#5860f5;
-    padding-left: 1px;
-    padding-right: 1px;
-  }
-  .image{
-    width: 30%;
-    height: 400px;
-    margin-right: 1%;
-    background-color: white;
-    padding-right: 5%;
-    position: relative;
-    border-radius: 10px;
-    border: 2px solid rgb(6, 6, 92);
-    box-shadow: inset 0px 0px 5px 5px#5860f5;
-    /* Enable scrollbars when the content overflows */
-    overflow: auto; 
-    background-image: url('./assets/Sorting.jpg');
-    /* Adjust to fit the image inside the div */
-    background-size: 100% 100%; 
-  }
-  .bar {
-    /* width: 28px; */
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-color: violet;
-    border: 1px solid black;
-    transition: 0.2s all ease;
-  }
-  #scrollableDiv {
-    width: 300px;
-    height: 200px;
-  }
-  
+}
 @media (max-width: 767px) {
-     body {
-      font-size: 10px;
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+  body {
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   .data-container {
     width: 90%;
     padding-right: 5%;
@@ -217,23 +249,46 @@ label {
     width: 90%;
     margin: 2% auto;
   }
-  .bottom{
+  .bottom {
     width: 90%;
     margin: 2% auto;
   }
-  #comp{
+  #comp {
     text-align: center;
   }
   #swap {
     text-align: center;
   }
-  .custom-select{
-    width:50%;
-    margin-left:25%;
+  .custom-select {
+    width: 50%;
+    margin-left: 25%;
     margin-right: 25%;
   }
-  .select-items{
+  .select-items {
     background-color: rgb(89, 70, 126);
   }
-       
+  label {
+    display: block;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  .row {
+    display: block;
+  }
+  #array-size {
+    width: 30%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  .gen-array {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  .sort {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
 }
